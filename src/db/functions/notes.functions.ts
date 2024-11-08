@@ -1,5 +1,8 @@
 import type { DbContext } from '../../middlewares/db.middleware';
-import { notes as notesTable } from '../schema/notes';
+import {
+	generateTodayDateFormatted,
+	notes as notesTable,
+} from '../schema/notes';
 import { type NotesTypeS } from '../schema/notes';
 import { eq } from 'drizzle-orm';
 import type { NoteCreateDTO } from '../../DTO/notes/create.DTO';
@@ -91,7 +94,7 @@ export async function updateNote({
 	try {
 		const [updatedNote] = await db
 			.update(notesTable)
-			.set(note)
+			.set({ ...note, created: generateTodayDateFormatted() })
 			.where(eq(notesTable.id, id))
 			.returning();
 
