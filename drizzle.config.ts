@@ -5,10 +5,7 @@ if (!url || !authToken) throw new Error('Env variables not setted');
 
 export default defineConfig({
 	out: './drizzle',
-	schema: [
-		'./src/db/schemas/user.schema.ts',
-		'./src/db/schemas/notes.schema.ts',
-	],
+	schema: './src/db/schema',
 	dialect: 'turso',
 	dbCredentials: {
 		url,

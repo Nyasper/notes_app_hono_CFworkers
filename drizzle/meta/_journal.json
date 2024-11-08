@@ -5,36 +5,8 @@
     {
       "idx": 0,
       "version": "6",
-      "when": 1730415523664,
-      "tag": "0000_far_obadiah_stane",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "6",
-      "when": 1730416259283,
-      "tag": "0001_awesome_sprite",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "6",
-      "when": 1730416271931,
-      "tag": "0002_stormy_pride",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "6",
-      "when": 1730418035308,
-      "tag": "0003_chubby_guardsmen",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "6",
-      "when": 1730418116430,
-      "tag": "0004_luxuriant_tony_stark",
+      "when": 1731029469162,
+      "tag": "0000_fearless_nico_minoru",
       "breakpoints": true
     }
   ]
