@@ -7,7 +7,17 @@ import { logger } from 'hono/logger';
 
 export const router = new Hono()
 	.use(logger())
-	.use('/*', cors({ origin: ['http://localhost:5173'], credentials: true }))
+	.use(
+		'/*',
+		cors({
+			origin: [
+				'http://localhost:5173',
+				'http://localhost:4173',
+				'https://vue-notes-app-rose.vercel.app',
+			],
+			credentials: true,
+		})
+	)
 	.get('/', (c) => c.text('hello hono notes API!'))
 	.route('/auth', authRouter)
 	.route('/notes', notesRouter)
