@@ -37,7 +37,6 @@ export const authRouter = new Hono()
 			httpOnly: true,
 			sameSite: 'none',
 			secure: true,
-			partitioned: true,
 		});
 		return c.json(response, statusCode);
 	})
