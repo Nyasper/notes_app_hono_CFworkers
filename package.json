@@ -11,16 +11,16 @@
 		"@libsql/client": "^0.14.0",
 		"bcrypt": "^5.1.1",
 		"bcryptjs": "^2.4.3",
-		"drizzle-orm": "^0.36.3",
-		"hono": "^4.6.10",
+		"drizzle-orm": "^0.36.4",
+		"hono": "^4.6.12",
 		"uuid": "^11.0.3",
 		"zod": "^3.23.8"
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "^4.20241112.0",
 		"@types/bcryptjs": "^2.4.6",
-		"@types/node": "^22.9.0",
+		"@types/node": "^22.9.3",
 		"drizzle-kit": "^0.28.1",
-		"wrangler": "^3.87.0"
+		"wrangler": "^3.90.0"
 	}
 }
