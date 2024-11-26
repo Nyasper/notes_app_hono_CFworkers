@@ -33,11 +33,14 @@ export const authRouter = new Hono()
 			user,
 			tokenSecret,
 		});
-		setCookie(c, 'token', token!, {
-			httpOnly: true,
-			sameSite: 'none',
-			secure: true,
-		});
+
+		if (statusCode === 200) {
+			setCookie(c, 'token', token!, {
+				httpOnly: true,
+				sameSite: 'none',
+				secure: true,
+			});
+		}
 		return c.json(response, statusCode);
 	})
 	.get('/info', requireAuth, async ({ var: { userPayload }, json }) => {
@@ -47,6 +50,11 @@ export const authRouter = new Hono()
 		);
 	})
 	.post('/logout', async (c) => {
+		setCookie(c, 'token', '', {
+			httpOnly: true,
+			sameSite: 'none',
+			secure: true,
+		});
 		deleteCookie(c, 'token');
 		return c.json({ sucess: true, message: 'user logout succesfully' }, 200);
 	});

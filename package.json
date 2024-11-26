@@ -13,6 +13,7 @@
 		"bcryptjs": "^2.4.3",
 		"drizzle-orm": "^0.36.4",
 		"hono": "^4.6.12",
+		"notes_app_hono_CFworkers": ".",
 		"uuid": "^11.0.3",
 		"zod": "^3.23.8"
 	},
