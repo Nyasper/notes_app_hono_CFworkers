@@ -1,10 +1,10 @@
 export const NoteDTOConsts: NoteValidationConstants = {
 	title: {
 		min: 2,
-		max: 60,
+		max: 70,
 	},
 	description: {
-		max: 300,
+		max: 1000,
 		default: '',
 	},
 };
