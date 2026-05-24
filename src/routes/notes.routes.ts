@@ -12,12 +12,13 @@ import { useDB } from '../middlewares/db.middleware';
 import { zValidator } from '@hono/zod-validator';
 import { requireAuth } from '../middlewares/auth.middleware';
 import { NoteUpdateDTO, noteUpdateDTO } from '../DTO/notes/update.DTO';
+import { handleValidationError } from '../middlewares/validation.middleware';
 
 export const notesRouter = new Hono()
 	.use('/*', requireAuth)
 	.post(
 		'/',
-		zValidator('json', noteCreateDTO),
+		zValidator('json', noteCreateDTO, handleValidationError),
 		useDB,
 		async ({ var: { db, userPayload }, req, json }) => {
 			const noteToInsert: NoteCreateDTO = await req.json();
@@ -46,7 +47,7 @@ export const notesRouter = new Hono()
 	})
 	.put(
 		'/:id',
-		zValidator('json', noteUpdateDTO),
+		zValidator('json', noteUpdateDTO, handleValidationError),
 		useDB,
 		async ({ req, var: { db }, json }) => {
 			const { id } = req.param();

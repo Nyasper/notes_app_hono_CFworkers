@@ -26,13 +26,15 @@ export async function insertNote({
 			statusCode: 201,
 			data: noteInserted,
 		};
-	} catch (error) {
+	} catch (error: any) {
 		const message = 'Error trying to insert note';
-		console.error(message, error);
+		console.error(`[notes.functions.insertNote] ${message}:`, error);
 		return {
 			success: false,
 			message,
 			statusCode: 500,
+			error: error instanceof Error ? error.message : String(error),
+			stack: error instanceof Error ? error.stack : undefined,
 		};
 	}
 }
@@ -53,10 +55,17 @@ export async function getNotesFromUser({
 			statusCode: 200,
 			data: notes,
 		};
-	} catch (error) {
+	} catch (error: any) {
 		const message = 'Error trying to get notes';
-		console.error(message, error);
-		return { success: false, message, statusCode: 500, data: [] };
+		console.error(`[notes.functions.getNotesFromUser] ${message}:`, error);
+		return {
+			success: false,
+			message,
+			statusCode: 500,
+			data: [],
+			error: error instanceof Error ? error.message : String(error),
+			stack: error instanceof Error ? error.stack : undefined,
+		};
 	}
 }
 
@@ -79,10 +88,16 @@ export async function getNote({
 			statusCode: 200,
 			data: note,
 		};
-	} catch (error) {
+	} catch (error: any) {
 		const message = 'Error trying to get notes';
-		console.error(message, error);
-		return { success: false, message, statusCode: 500 };
+		console.error(`[notes.functions.getNote] ${message}:`, error);
+		return {
+			success: false,
+			message,
+			statusCode: 500,
+			error: error instanceof Error ? error.message : String(error),
+			stack: error instanceof Error ? error.stack : undefined,
+		};
 	}
 }
 
@@ -111,10 +126,16 @@ export async function updateNote({
 			message: 'Note updated successfully',
 			statusCode: 200,
 		};
-	} catch (error) {
+	} catch (error: any) {
 		const message = 'Error on trying to update note';
-		console.error(message, error);
-		return { success: false, message, statusCode: 500 };
+		console.error(`[notes.functions.updateNote] ${message}:`, error);
+		return {
+			success: false,
+			message,
+			statusCode: 500,
+			error: error instanceof Error ? error.message : String(error),
+			stack: error instanceof Error ? error.stack : undefined,
+		};
 	}
 }
 
@@ -136,10 +157,16 @@ export async function deleteNote({
 			message: 'Note deleted successfully',
 			statusCode: 200,
 		};
-	} catch (error) {
+	} catch (error: any) {
 		const message = 'Error on trying to delete note';
-		console.error(message, error);
-		return { success: false, message, statusCode: 500 };
+		console.error(`[notes.functions.deleteNote] ${message}:`, error);
+		return {
+			success: false,
+			message,
+			statusCode: 500,
+			error: error instanceof Error ? error.message : String(error),
+			stack: error instanceof Error ? error.stack : undefined,
+		};
 	}
 }
 
@@ -155,10 +182,16 @@ export async function deleteAllNotes({
 			message: 'Notes deleted successfully',
 			statusCode: 200,
 		};
-	} catch (error) {
+	} catch (error: any) {
 		const message = 'Error on trying to delete notes';
-		console.error(message, error);
-		return { success: false, message, statusCode: 500 };
+		console.error(`[notes.functions.deleteAllNotes] ${message}:`, error);
+		return {
+			success: false,
+			message,
+			statusCode: 500,
+			error: error instanceof Error ? error.message : String(error),
+			stack: error instanceof Error ? error.stack : undefined,
+		};
 	}
 }
 

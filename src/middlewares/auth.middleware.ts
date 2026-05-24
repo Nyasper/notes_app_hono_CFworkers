@@ -16,7 +16,8 @@ export const requireAuth = createMiddleware<JwtContext>(async (c, next) => {
 	try {
 		const payload = (await JwtVerify(
 			token,
-			c.env.JWT_SECRET
+			c.env.JWT_SECRET,
+			'HS256'
 		)) as JwtCustomPayload;
 
 		c.set('userPayload', payload);
@@ -38,7 +39,8 @@ export const requireAdmin = createMiddleware<JwtContext>(async (c, next) => {
 	try {
 		const payload = (await JwtVerify(
 			token,
-			c.env.JWT_SECRET
+			c.env.JWT_SECRET,
+			'HS256'
 		)) as JwtCustomPayload;
 
 		if (payload.admin !== true)

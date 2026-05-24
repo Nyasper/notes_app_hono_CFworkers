@@ -22,6 +22,7 @@
 		"@types/bcryptjs": "^3.0.0",
 		"@types/node": "^22.19.19",
 		"drizzle-kit": "^0.31.10",
+		"typescript": "^6.0.3",
 		"wrangler": "^4.94.0"
 	}
 }

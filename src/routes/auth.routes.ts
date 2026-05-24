@@ -9,11 +9,12 @@ import { loginUser, registerUser } from '../db/functions/users.function';
 import { useDB } from '../middlewares/db.middleware';
 import { setCookie, deleteCookie } from 'hono/cookie';
 import { requireAuth } from '../middlewares/auth.middleware';
+import { handleValidationError } from '../middlewares/validation.middleware';
 
 export const authRouter = new Hono()
 	.post(
 		'/register',
-		zValidator('json', userRegisterDTO),
+		zValidator('json', userRegisterDTO, handleValidationError),
 		useDB,
 
 		async ({ var: { db }, req, json }) => {
@@ -23,7 +24,7 @@ export const authRouter = new Hono()
 			return json(response, statusCode);
 		}
 	)
-	.post('/login', zValidator('json', userLoginDTO), useDB, async (c) => {
+	.post('/login', zValidator('json', userLoginDTO, handleValidationError), useDB, async (c) => {
 		const user: UserLoginDTO = await c.req.json();
 		const db = c.var.db;
 

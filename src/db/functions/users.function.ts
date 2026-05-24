@@ -32,10 +32,16 @@ export async function registerUser({
 			message: 'User registered successfully',
 			statusCode: 201,
 		};
-	} catch (error) {
-		const message = 'Error on regiter user';
-		console.error(message, error);
-		return { success: false, message, statusCode: 500 };
+	} catch (error: any) {
+		const message = 'Error on register user';
+		console.error(`[users.function.registerUser] ${message}:`, error);
+		return {
+			success: false,
+			message,
+			statusCode: 500,
+			error: error instanceof Error ? error.message : String(error),
+			stack: error instanceof Error ? error.stack : undefined,
+		};
 	}
 }
 
@@ -81,14 +87,16 @@ export async function loginUser({
 			statusCode: 200,
 			token,
 		};
-	} catch (error) {
+	} catch (error: any) {
 		const message = 'Error on login user';
-		console.error(message, error);
+		console.error(`[users.function.loginUser] ${message}:`, error);
 		return {
 			success: false,
 			message,
 			statusCode: 500,
 			token: null,
+			error: error instanceof Error ? error.message : String(error),
+			stack: error instanceof Error ? error.stack : undefined,
 		};
 	}
 }

@@ -1,8 +1,10 @@
-import { StatusCode } from 'hono/utils/http-status';
+import { ContentfulStatusCode } from 'hono/utils/http-status';
 
 interface BaseResponse {
 	success: boolean;
-	statusCode: StatusCode;
+	statusCode: ContentfulStatusCode;
+	error?: string;
+	stack?: string;
 }
 
 export interface ResponseWithMessage extends BaseResponse {

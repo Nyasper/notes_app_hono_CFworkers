@@ -23,14 +23,16 @@ export async function getUsers(
 			message: `returning ${users.length} users`,
 			statusCode: 200,
 		};
-	} catch (error) {
+	} catch (error: any) {
 		const message = 'Error on trying to obtain all users.';
-		console.error(message, error);
+		console.error(`[admin.functions.getUsers] ${message}:`, error);
 		return {
 			success: false,
 			data: [],
 			message,
 			statusCode: 500,
+			error: error instanceof Error ? error.message : String(error),
+			stack: error instanceof Error ? error.stack : undefined,
 		};
 	}
 }
@@ -55,10 +57,16 @@ export async function getUser({
 			data: user,
 			statusCode: 200,
 		};
-	} catch (error) {
+	} catch (error: any) {
 		const message = 'Error on trying to get an user';
-		console.error(message, error);
-		return { success: false, message, statusCode: 500 };
+		console.error(`[admin.functions.getUser] ${message}:`, error);
+		return {
+			success: false,
+			message,
+			statusCode: 500,
+			error: error instanceof Error ? error.message : String(error),
+			stack: error instanceof Error ? error.stack : undefined,
+		};
 	}
 }
 
@@ -82,12 +90,18 @@ export async function deleteUser({
 		return {
 			success: true,
 			message: 'User deleted successfully',
-			statusCode: 204,
+			statusCode: 200,
 		};
-	} catch (error) {
+	} catch (error: any) {
 		const message = 'Error trying to delete user';
-		console.error(message, error);
-		return { success: false, message, statusCode: 500 };
+		console.error(`[admin.functions.deleteUser] ${message}:`, error);
+		return {
+			success: false,
+			message,
+			statusCode: 500,
+			error: error instanceof Error ? error.message : String(error),
+			stack: error instanceof Error ? error.stack : undefined,
+		};
 	}
 }
 
