@@ -1,28 +1,29 @@
 {
-	"name": "notes_app_hono_CFworkers",
-	"scripts": {
-		"dev": "wrangler dev",
-		"deploy": "wrangler deploy --minify",
-		"db:generate": "bunx drizzle-kit generate",
-		"db:migrate": "bunx drizzle-kit migrate"
-	},
-	"dependencies": {
-		"@hono/zod-validator": "^0.8.0",
-		"@libsql/client": "^0.17.3",
-		"bcrypt": "^6.0.0",
-		"bcryptjs": "^3.0.3",
-		"drizzle-orm": "^0.45.2",
-		"hono": "^4.12.22",
-		"notes_app_hono_CFworkers": ".",
-		"uuid": "^11.0.3",
-		"zod": "^4.4.3"
-	},
-	"devDependencies": {
-		"@cloudflare/workers-types": "^4.20260524.1",
-		"@types/bcryptjs": "^3.0.0",
-		"@types/node": "^22.19.19",
-		"drizzle-kit": "^0.31.10",
-		"typescript": "^6.0.3",
-		"wrangler": "^4.94.0"
-	}
+  "name": "notes_app_hono_CFworkers",
+  "version": "2.0.0",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy --minify",
+    "db:generate": "bunx drizzle-kit generate",
+    "db:migrate": "bunx drizzle-kit migrate"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "^0.8.0",
+    "@libsql/client": "^0.17.3",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.3",
+    "drizzle-orm": "^0.45.2",
+    "hono": "^4.12.22",
+    "notes_app_hono_CFworkers": ".",
+    "uuid": "^11.0.3",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260524.1",
+    "@types/bcryptjs": "^3.0.0",
+    "@types/node": "^22.19.19",
+    "drizzle-kit": "^0.31.10",
+    "typescript": "^6.0.3",
+    "wrangler": "^4.94.0"
+  }
 }
